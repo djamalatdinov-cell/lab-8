@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int authChars(string s) {
+    int seen[26] = {0};   /
+    int total = 0;
+    for (int i = 0; i < s.length(); i++) {
+        char ch = s[i];
+        int place = ch - 'A';
+        seen[place] = 1;
+    }
+
+    for (int i = 0; i < 26; i++) {
+        if (seen[i] == 1) {
+            total = total + 1;
+        }
+    }
+    return total;
+}
+
+int main() {
+    string s;
+    cout << "Enter a string (A–Z only): ";
+    cin >> s;
+    cout << "Number of authentic letters: " << authChars(s) << endl;
+
+    return 0;
+}
